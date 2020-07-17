@@ -70,9 +70,16 @@
     <Compile Include="Common\OnPropertyChangedClass.cs" />
     <Compile Include="Common\RelayActionCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RelayCommand_T.cs" />
     <Compile Include="Common\SimpleMultiConverter.cs" />
     <Compile Include="DTO\EmployeeDto.cs" />
     <Compile Include="DTO\PositionDto.cs" />
+    <Compile Include="InterfacesVM\IEditEmployee.cs" />
+    <Compile Include="InterfacesVM\IEmployeesList.cs" />
+    <Compile Include="InterfacesVM\IEmployeeVM.cs" />
+    <Compile Include="InterfacesVM\IAddEmployee.cs" />
+    <Compile Include="InterfacesVM\IMainViewModel.cs" />
+    <Compile Include="InterfacesVM\IViewEmployee.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
