@@ -4,6 +4,6 @@
     public interface IViewEmployee
     {
         /// <summary>Данные выбранного сотрудника.</summary>
-        IEmployeeVM SelectedEmployeу { get; }
+        IEmployeeVM SelectedEmployee { get; }
     }
 }
