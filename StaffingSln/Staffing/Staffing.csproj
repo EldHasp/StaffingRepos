@@ -55,6 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StaffingWind.xaml.cs">
+      <DependentUpon>StaffingWind.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUC\AboutUC.xaml.cs">
+      <DependentUpon>AboutUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUC\AddEmployeeUC.xaml.cs">
+      <DependentUpon>AddEmployeeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUC\DesignEmployee.cs" />
+    <Compile Include="ViewUC\DesignViewEmployee.cs" />
+    <Compile Include="ViewUC\EditEmployeeUC.xaml.cs">
+      <DependentUpon>EditEmployeeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUC\EmployeesListUC.xaml.cs">
+      <DependentUpon>EmployeesListUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewUC\ViewEmployeeUC.xaml.cs">
+      <DependentUpon>ViewEmployeeUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +104,30 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StaffingWind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUC\AboutUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUC\AddEmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUC\EditEmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUC\EmployeesListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUC\ViewEmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\StaffingModel - Methods.cs" />

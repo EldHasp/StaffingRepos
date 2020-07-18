@@ -1,0 +1,43 @@
+﻿<Window x:Class="Staffing.StaffingWind"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Staffing"
+        mc:Ignorable="d"
+        Title="StaffingWind" Height="450" Width="800"
+        xmlns:ivm="clr-namespace:Staffing.InterfacesVM"
+        d:DataContext="{x:Type ivm:IMainViewModel}"
+        xmlns:uc="clr-namespace:Staffing.ViewUC">
+    <Window.Resources>
+        <uc:AboutUC Background="LightGreen" x:Key="AboutUC"/>
+        <uc:EditEmployeeUC Background="LightGreen" x:Key="EditUC"/>
+        <uc:AddEmployeeUC Background="LightGreen" x:Key="AddtUC"/>
+        <uc:ViewEmployeeUC Background="LightGreen" x:Key="ViewUC"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <uc:EmployeesListUC Background="LightBlue" Margin="5"/>
+        <ContentPresenter Grid.Column="1" Margin="5">
+            <ContentPresenter.Style>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Content" Value="{StaticResource AboutUC}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.View}">
+                            <Setter Property="Content" Value="{StaticResource ViewUC}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.Adding}">
+                            <Setter Property="Content" Value="{StaticResource AddtUC}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.Editing}">
+                            <Setter Property="Content" Value="{StaticResource EditUC}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentPresenter.Style>
+        </ContentPresenter>
+    </Grid>
+</Window>

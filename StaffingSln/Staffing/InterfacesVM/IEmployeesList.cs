@@ -13,7 +13,7 @@ namespace Staffing.InterfacesVM
         ObservableCollection<IEmployeeVM> Employees { get; }
 
         /// <summary>Данные выбранного сотрудника.</summary>
-        IEmployeeVM SelectedEmployee { get; }
+        IEmployeeVM SelectedEmployee { get; set; }
 
         /// <summary>Команда перехода в один из Pежим Отображения.</summary>
         RelayCommand<ViewModeEnum> ModeCommand { get; }

@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Staffing.ViewUC.EmployeesListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Staffing.ViewUC"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:ivm="clr-namespace:Staffing.InterfacesVM"
+             d:DataContext="{x:Type ivm:IEmployeesList}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Список Сотрудников" Margin="5" TextAlignment="Center" FontSize="20"/>
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Employees}"
+                 DisplayMemberPath="About"
+                 SelectedItem="{Binding SelectedEmployee}"/>
+        <Grid Grid.Row="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Редактировать" Padding="15,5" Grid.Column="1"
+                    Command="{Binding ModeCommand, Mode=OneWay}"
+                    CommandParameter="{x:Static ivm:ViewModeEnum.Editing}"/>
+            <Button Content="Добавить" Padding="15,5" Grid.Column="3"
+                    Command="{Binding ModeCommand, Mode=OneWay}"
+                    CommandParameter="{x:Static ivm:ViewModeEnum.Adding}"/>
+            <Button Content="Удалить" Padding="15,5" Grid.Column="5"
+                    Command="{Binding RemoveEmployeeCommand, Mode=OneWay}"
+                    CommandParameter="{Binding SelectedEmployee}"/>
+        </Grid>
+    </Grid>
+</UserControl>
