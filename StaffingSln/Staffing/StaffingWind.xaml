@@ -21,9 +21,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <uc:EmployeesListUC Background="LightBlue" Margin="5"/>
-        <ContentPresenter Grid.Column="1" Margin="5">
-            <ContentPresenter.Style>
-                <Style TargetType="ContentPresenter">
+        <ContentControl Grid.Column="1" Margin="5">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
                     <Setter Property="Content" Value="{StaticResource AboutUC}"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.View}">
@@ -37,7 +37,7 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </ContentPresenter.Style>
-        </ContentPresenter>
+            </ContentControl.Style>
+        </ContentControl>
     </Grid>
 </Window>

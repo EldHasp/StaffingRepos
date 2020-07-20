@@ -55,9 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\ICloneableT.cs" />
+    <Compile Include="Common\ICopyT.cs" />
+    <Compile Include="Common\IDto.cs" />
     <Compile Include="StaffingWind.xaml.cs">
       <DependentUpon>StaffingWind.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\EmployeeVM.cs" />
+    <Compile Include="ViewModel\OnlyViewVM.cs" />
     <Compile Include="ViewUC\AboutUC.xaml.cs">
       <DependentUpon>AboutUC.xaml</DependentUpon>
     </Compile>
