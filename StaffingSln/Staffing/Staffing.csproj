@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="ViewModel\EmployeeVM.cs" />
     <Compile Include="ViewModel\OnlyViewVM.cs" />
+    <Compile Include="ViewModel\StaffingViewModel.cs" />
     <Compile Include="ViewUC\AboutUC.xaml.cs">
       <DependentUpon>AboutUC.xaml</DependentUpon>
     </Compile>
