@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 namespace Staffing.InterfacesVM
 {
     /// <summary>Интерфейс редактирования данных Сотрудника.</summary>
-    public interface IEditEmployee
+    public interface IEditEmployee : IModeExitCommand
     {
         /// <summary>Коллекция должностей.</summary>
         ObservableCollection<PositionDto> Positions { get; }
@@ -16,7 +16,5 @@ namespace Staffing.InterfacesVM
         /// <summary>Команда сохранения изменения данных Сотрудника.</summary>
         RelayCommand<IEmployeeVM> SaveEditEmployeeCommand { get; }
 
-        /// <summary>Команда выхода из режима редактирования данных Сотрудника.</summary>
-        RelayActionCommand EditModeExitCommand { get; }
     }
 }

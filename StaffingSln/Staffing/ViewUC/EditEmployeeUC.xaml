@@ -61,7 +61,8 @@
                     Command="{Binding SaveEditEmployeeCommand, Mode=OneWay}"
                     CommandParameter="{Binding EditEmployee, Mode=OneWay}"/>
             <Button Grid.Column="1" Content="Отмена" Padding="15,5" Margin="5" HorizontalAlignment="Center"
-                    Command="{Binding EditModeExitCommand, Mode=OneWay}"/>
+                    Command="{Binding ModeExitCommand, Mode=OneWay}"
+                    CommandParameter="{x:Static ivm:ViewModeEnum.Editing}"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -7,13 +7,10 @@ namespace Staffing.InterfacesVM
     public enum ViewModeEnum { Empty, View, Adding, Editing }
 
     /// <summary>Интерфейс списка Сотрудников с командами для его изменения.</summary>
-    public interface IEmployeesList
+    public interface IEmployeesList : ISelectedEmployee
     {
         /// <summary>Коллекция Cотрудников.</summary>
         ObservableCollection<IEmployeeVM> Employees { get; }
-
-        /// <summary>Данные выбранного сотрудника.</summary>
-        IEmployeeVM SelectedEmployee { get; set; }
 
         /// <summary>Команда перехода в один из Pежим Отображения.</summary>
         RelayCommand<ViewModeEnum> ModeCommand { get; }

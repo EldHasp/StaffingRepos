@@ -86,7 +86,7 @@ namespace Staffing.ViewModel
             EmployeeVM empl = (EmployeeVM)parameter;
             model.AddEmployee(empl.Copy());
 
-            AddModeExitMethod();
+            ModeExitMethod(ViewModeEnum.Adding);
         }
 
         protected override void RemoveEmployeeMethod(IEmployeeVM parameter)
@@ -111,7 +111,7 @@ namespace Staffing.ViewModel
             EmployeeVM empl = (EmployeeVM)parameter;
             model.ChangeEmployee(empl.Dto, empl.Copy());
 
-            EditModeExitMethod();
+            ModeExitMethod(ViewModeEnum.Editing);
         }
     }
 }

@@ -141,26 +141,29 @@ namespace Staffing.ViewModel
             empl.SetDto(new EmployeeDto(random.Next(), empl.FirstName, empl.Position, empl.DateOfBirth));
             Employees.Add(empl);
 
-            AddModeExitMethod();
+            ModeExitMethod(ViewModeEnum.Adding);
         }
 
         protected static readonly Random random = new Random();
 
-        private RelayActionCommand _addModeExitCommand;
-        public RelayActionCommand AddModeExitCommand => _addModeExitCommand
-            ?? (_addModeExitCommand = new RelayActionCommand(AddModeExitMethod, AddModeExiCantMethod));
+        private RelayCommand<ViewModeEnum> _modeExitCommand;
+        public RelayCommand<ViewModeEnum> ModeExitCommand => _modeExitCommand
+            ?? (_modeExitCommand = new RelayCommand<ViewModeEnum>(ModeExitMethod, ModeExiCantMethod));
 
-        /// <summary>Метод состояния команды выхода из Режима Adding.</summary>
-        /// <returns><see langword="true"/>, если текущий Режим Adding.</returns>
-        protected bool AddModeExiCantMethod()
+        /// <summary>Метод состояния команды выхода из Режима.</summary>
+        /// <param name="mode">Режим из которого надо выйти.</param>
+        /// <returns><see langword="true"/>, если текущий Режим совпадает с указанным.</returns>
+        protected bool ModeExiCantMethod(ViewModeEnum mode)
         {
-            return ViewMode == ViewModeEnum.Adding;
+            return mode != ViewModeEnum.Empty && mode != ViewModeEnum.View
+                   && mode == ViewMode;
         }
 
-        /// <summary>Метод команды выхода из Режима Adding.</summary>
-        protected void AddModeExitMethod()
+        /// <summary>Метод команды выхода из Режима.</summary>
+        /// <param name="mode">Режим из которого надо выйти.</param>
+        protected void ModeExitMethod(ViewModeEnum mode)
         {
-            if (!AddModeExiCantMethod())
+            if (!ModeExiCantMethod(mode))
                 return;
 
             // Если нет выбранного Сотрудник, то переход в Режим Empty.
@@ -170,8 +173,17 @@ namespace Staffing.ViewModel
             else
                 ModeMethod(ViewModeEnum.View);
 
-            AddEmployee = null;
-
+            switch (mode)
+            {
+                case ViewModeEnum.Adding:
+                    AddEmployee = null;
+                    break;
+                case ViewModeEnum.Editing:
+                    EditEmployee = null;
+                    break;
+                default:
+                    throw new ArgumentException(nameof(mode)); ;
+            }
         }
 
         private IEmployeeVM _editEmployee;
@@ -206,34 +218,7 @@ namespace Staffing.ViewModel
             EmployeeVM employee = (EmployeeVM)Employees.First(empl => empl.Id == parameter.Id);
             employee.SetDto(((EmployeeVM)parameter).Copy());
 
-            EditModeExitMethod();
-        }
-
-        private RelayActionCommand _editModeExitCommand;
-        public RelayActionCommand EditModeExitCommand => _editModeExitCommand
-            ?? (_editModeExitCommand = new RelayActionCommand(EditModeExitMethod, EditModeExitCanMethod));
-
-        /// <summary>Метод состояния команды выхода из Режима Editing.</summary>
-        /// <returns><see langword="true"/>, если текущий Режим Editing.</returns>
-        protected bool EditModeExitCanMethod()
-        {
-            return ViewMode == ViewModeEnum.Editing;
-        }
-
-        /// <summary>Метод команды выхода из Режима .</summary>
-        protected void EditModeExitMethod()
-        {
-            if (!EditModeExitCanMethod())
-                return;
-
-            // Если нет выбранного Сотрудник, то переход в Режим Empty.
-            // Иначе -  в Режим View.
-            if (SelectedEmployee == null)
-                ModeMethod(ViewModeEnum.Empty);
-            else
-                ModeMethod(ViewModeEnum.View);
-
-            EditEmployee = null;
+            ModeExitMethod(ViewModeEnum.Editing);
         }
 
         protected override void PropertyNewValue<T>(ref T fieldProperty, T newValue, string propertyName)

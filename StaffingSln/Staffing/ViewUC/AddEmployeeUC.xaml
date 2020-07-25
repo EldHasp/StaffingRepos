@@ -61,7 +61,8 @@
                     Command="{Binding AddEmployeeCommand, Mode=OneWay}"
                     CommandParameter="{Binding AddEmployee, Mode=OneWay}"/>
             <Button Grid.Column="1" Content="Отмена" Padding="15,5" Margin="5" HorizontalAlignment="Center"
-                    Command="{Binding AddModeExitCommand, Mode=OneWay}"/>
+                    Command="{Binding ModeExitCommand, Mode=OneWay}"
+                    CommandParameter="{x:Static ivm:ViewModeEnum.Adding}"/>
         </Grid>
     </Grid>
 </UserControl>

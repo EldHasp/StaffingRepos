@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 namespace Staffing.InterfacesVM
 {
     /// <summary>Интерфейс добавления нового Сотрудника.</summary>
-    public interface IAddEmployee
+    public interface IAddEmployee : IModeExitCommand
     {
         /// <summary>Коллекция должностей.</summary>
         ObservableCollection<PositionDto> Positions { get; }
@@ -16,7 +16,5 @@ namespace Staffing.InterfacesVM
         /// <summary>Команда добавления Сотрудника.</summary>
         RelayCommand<IEmployeeVM> AddEmployeeCommand { get; }
 
-        /// <summary>Команда выхода из режима добавления Сотрудника.</summary>
-        RelayActionCommand AddModeExitCommand { get; }
     }
 }
