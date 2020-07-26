@@ -8,12 +8,15 @@
         Title="StaffingWind" Height="450" Width="800"
         xmlns:ivm="clr-namespace:Staffing.InterfacesVM"
         d:DataContext="{x:Type ivm:IMainViewModel}"
-        xmlns:uc="clr-namespace:Staffing.ViewUC">
+        xmlns:uc="clr-namespace:Staffing.ViewUC"
+        xmlns:common="clr-namespace:Common">
     <Window.Resources>
-        <uc:AboutUC Background="LightGreen" x:Key="AboutUC"/>
-        <uc:EditEmployeeUC Background="LightGreen" x:Key="EditUC"/>
-        <uc:AddEmployeeUC Background="LightGreen" x:Key="AddtUC"/>
-        <uc:ViewEmployeeUC Background="LightGreen" x:Key="ViewUC"/>
+        <common:DictionaryKeyToValueConverter x:Key="ViewConverter">
+            <uc:AboutUC Background="LightGreen" x:Key="{x:Static ivm:ViewModeEnum.Empty}"/>
+            <uc:EditEmployeeUC Background="LightGreen" x:Key="{x:Static ivm:ViewModeEnum.Editing}"/>
+            <uc:AddEmployeeUC Background="LightGreen" x:Key="{x:Static ivm:ViewModeEnum.Adding}"/>
+            <uc:ViewEmployeeUC Background="LightGreen" x:Key="{x:Static ivm:ViewModeEnum.View}"/>
+        </common:DictionaryKeyToValueConverter>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,23 +24,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <uc:EmployeesListUC Background="LightBlue" Margin="5"/>
-        <ContentControl Grid.Column="1" Margin="5">
-            <ContentControl.Style>
-                <Style TargetType="ContentControl">
-                    <Setter Property="Content" Value="{StaticResource AboutUC}"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.View}">
-                            <Setter Property="Content" Value="{StaticResource ViewUC}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.Adding}">
-                            <Setter Property="Content" Value="{StaticResource AddtUC}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ViewMode, Mode=OneWay}" Value="{x:Static ivm:ViewModeEnum.Editing}">
-                            <Setter Property="Content" Value="{StaticResource EditUC}"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <ContentControl Grid.Column="1" Margin="5" Content="{Binding ViewMode, Converter={StaticResource ViewConverter}, Mode=OneWay}"/>
     </Grid>
 </Window>
